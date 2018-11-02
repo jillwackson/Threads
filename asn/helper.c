@@ -135,6 +135,7 @@ char*** transform_linked_list_to_3d_char(struct linked_list *commands,
 
 void print(FILE *fp, char *fmt, int j)
 {
+	printf("%d" , j);
 	char msg[MAX_STR_LEN];
 
 	sprintf(msg, fmt, j);
