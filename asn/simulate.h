@@ -22,6 +22,6 @@
 #define NUMBER_OF_THREADS 4
 
 void simulate(int, linked_stack_t*);
-void *simulate_thread(int,int);
+void *simulate_thread(void *ptr);
 
 #endif
