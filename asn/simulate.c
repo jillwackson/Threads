@@ -21,8 +21,7 @@ void simulate(int memory_value, linked_stack_t *stack)
     //get the current job and then break it into its components
     int current_job_time, current_job_memory, current_job_number;
     job_t *current_job;
-    if (sizeof(stack)!=0)current_job = pop(stack); = pop(stack);
-
+    if (sizeof(stack)!=0)current_job = pop(stack);
     //while there are still jobs on the stack to be executed
     while (current_job != NULL)
     {
