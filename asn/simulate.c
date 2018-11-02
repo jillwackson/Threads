@@ -70,6 +70,6 @@ void *simulate_thread(void * ptr){
     job_t *job;
     job = (job_t *) ptr;
     print_starting(fp, job->number);
-    sleep(sleep_time);
+    sleep(job->required_time);
     print_completed(fp, job->number);
 }
