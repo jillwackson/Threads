@@ -137,10 +137,11 @@ void print(FILE *fp, char *fmt, int j)
 {
 	printf("hello 1");
 	char msg[MAX_STR_LEN];
-
+	printf("hello 1.1");
 	sprintf(msg, fmt, j);
-
+	printf("hello 1.2");
 	printf("%s", msg);
+	printf("hello 1.3");
 	fprintf(fp, "%s", msg);
 	printf("hello 2");
 }
