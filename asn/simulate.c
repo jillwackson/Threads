@@ -42,7 +42,7 @@ void simulate(int memory_value, linked_stack_t *stack)
             memory_usages[i] = current_job_memory;
             print_allocate_memory(fp, memory, current_job_memory);
             //start the thread
-            if(pthread_create( &threads[i++], NULL, simulate_thread, (void*) current_job){
+            if(pthread_create( &threads[i++], NULL, simulate_thread, (void*) current_job)){
                 perror("Thread Issue");
             }
         }
