@@ -5,7 +5,7 @@
 #include "simulate.h"
 
 int memory, max_memory;
-FILE *fp;
+FILE *fp = SYSTEM_OUTPUT;
 linked_stack_t *jobs;
 
 void simulate(int memory_value, linked_stack_t *stack)
