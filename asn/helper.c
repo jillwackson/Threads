@@ -140,7 +140,6 @@ void print(FILE *fp, char *fmt, int j)
 	printf("%d",j);
 	sprintf(msg, fmt, j);
 	printf("hello 1.2");
-	printf("%s", msg);
 	printf("hello 1.3");
 	fprintf(fp, "%s", msg);
 	printf("hello 2");
