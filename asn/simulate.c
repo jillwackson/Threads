@@ -65,6 +65,7 @@ void simulate(int memory_value, linked_stack_t *stack)
                 pthread_join(threads[i--], NULL);
             }
         }
+        printf("right before we pop the next");
         if (sizeof(stack)!=0)current_job = pop(stack);
     }
 }
