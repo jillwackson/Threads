@@ -22,7 +22,7 @@ void simulate(int memory_value, linked_stack_t *stack)
     job_t *current_job = pop(stack);
     int current_job_number = current_job->number;
     int current_job_memory = current_job->required_memory;
-    int current_job_time = curent_job->required_time;
+    int current_job_time = current_job->required_time;
     //while there are still jobs on the stack to be executed
     while (current_job!=NULL){
         //not enough memory total
@@ -43,7 +43,7 @@ void simulate(int memory_value, linked_stack_t *stack)
             print_allocate_memory(fp, memory, current_job_memory);
             //start the thread
             //pack args
-            int args[2] = {current_job_time, current_job_number}
+            int args[2] = {current_job_time, current_job_number};
             if(pthread_create( &threads[i++], NULL, *simulate_thread , (void *) *args)){
                 perror("Thread Issue");
             }else{
