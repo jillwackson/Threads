@@ -164,12 +164,17 @@ void print_completed(FILE *fp, int j)
 
 void print_memory_status(FILE *fp, int mem)
 {
+	printf("2.25");
 	print(fp, "Memory at %d\n", mem);
+	printf("2.75");
 }
 void print_allocate_memory(FILE *fp, int mem, int req)
 {
+	printf("1");
 	print(fp, "Allocating %d\n", req);
+	printf("2");
 	print_memory_status(fp, mem);
+	printf("3");
 }
 void print_deallocate_memory(FILE *fp, int mem, int req)
 {

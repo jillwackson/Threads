@@ -48,7 +48,7 @@ void simulate(int memory_value, linked_stack_t *stack)
             memory_usages[i] = current_job_memory;
             printf("Debug before alloc");
             print_allocate_memory(fp, memory, current_job_memory);
-            printf("Debug before alloc");
+            printf("Debug after alloc");
             //start the thread
             if (pthread_create(&threads[i], NULL, simulate_thread, (void *)current_job))
             {
