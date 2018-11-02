@@ -48,9 +48,11 @@ void simulate(int memory_value, linked_stack_t *stack)
             memory_usages[i] = current_job_memory;
             print_allocate_memory(fp, memory, current_job_memory);
             //start the thread
+            printf("hello im about to make threads");
             if (pthread_create(&threads[i++], NULL, simulate_thread, (void *)current_job))
             {
-                perror("Thread Issue");
+                printf("Thread Issue");
+                exit(1);
             }
         }
         //all of our threads are being used, lets wait for them to be free'd up.
@@ -72,10 +74,12 @@ void simulate(int memory_value, linked_stack_t *stack)
 
 //simulates the thread
 void *simulate_thread(void *ptr)
-{
+{   
+    printf("simulating our enemies");
     job_t *job;
     job = (job_t *) ptr;
     print_starting(fp, job->number);
     sleep(job->required_time);
     print_completed(fp, job->number);
+    printf("done siming");
 }
