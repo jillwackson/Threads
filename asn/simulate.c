@@ -20,9 +20,9 @@ void simulate(int memory_value, linked_stack_t *stack)
     int i = 0;
     //get the current job and then break it into its components
     job_t *current_job = pop(stack);
-    int current_job_number = current_job.number;
-    int current_job_memory = current_job.required_memory;
-    int current_job_time = curent_job.required_time;
+    int current_job_number = current_job->number;
+    int current_job_memory = current_job->required_memory;
+    int current_job_time = curent_job->required_time;
     //while there are still jobs on the stack to be executed
     while (current_job!=NULL){
         //not enough memory total
@@ -40,11 +40,12 @@ void simulate(int memory_value, linked_stack_t *stack)
             //allocate memory
             memory = memory - current_job_memory;
             memory_usages[i] = current_job_memory;
-            print_allocate_memory(current_job_memory);
+            print_allocate_memory(fp, memory, current_job_memory);
             //start the thread
-            if(pthread_create( &threads[i++], NULL, simulate_thread ,current_job_time, current_job_number)){
-                printf(”Error while creating thread\n”);
-                exit(1);
+            //pack args
+            int args[2] = {current_job_time, current_job_number}
+            if(pthread_create( &threads[i++], NULL, *simulate_thread , (void *) *args)){
+                perror("Thread Issue");
             }else{
                 
             }
@@ -54,9 +55,9 @@ void simulate(int memory_value, linked_stack_t *stack)
             while (i>0){
                 //deallocate memory and join threads
                 memory = memory + memory_usages[i];
-                print_deallocate_memory(fp, memory_usages[i]);
+                print_deallocate_memory(fp, memory ,memory_usages[i]);
                 memory_usages[i] = 0;
-                pthread_join(thread_id[i--], NULL); 
+                pthread_join(threads[i--], NULL); 
             }
         }
         
@@ -65,8 +66,8 @@ void simulate(int memory_value, linked_stack_t *stack)
 }
 
 //simulates the thread
-void simulate_thread(int sleep_time, int job_number){
+void *simulate_thread(int sleep_time, int job_number){
     print_starting(fp, job_number);
     sleep(sleep_time);
-    print_completed(fp, job_number)
+    print_completed(fp, job_number);
 }
