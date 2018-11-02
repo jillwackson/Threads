@@ -10,7 +10,7 @@ linked_stack_t *jobs;
 
 void simulate(int memory_value, linked_stack_t *stack)
 {
-    fp = SYSTEM_OUTPUT;
+    fp = stdout;
     //memory setup
     memory = memory_value;
     max_memory = memory_value;
