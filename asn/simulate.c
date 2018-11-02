@@ -21,8 +21,7 @@ void simulate(int memory_value, linked_stack_t *stack)
     int i = 0;
     //get the current job and then break it into its components
     int current_job_time, current_job_memory, current_job_number;
-    job_t *current_job;
-    if (sizeof(stack)!=0)current_job = pop(stack);
+    job_t *current_job = pop(stack);
     //while there are still jobs on the stack to be executed
     while (current_job != NULL)
     {
@@ -49,6 +48,7 @@ void simulate(int memory_value, linked_stack_t *stack)
             memory_usages[i] = current_job_memory;
             printf("Debug before alloc");
             print_allocate_memory(fp, memory, current_job_memory);
+            printf("Debug before alloc");
             //start the thread
             if (pthread_create(&threads[i], NULL, simulate_thread, (void *)current_job))
             {
