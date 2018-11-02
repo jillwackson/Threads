@@ -44,7 +44,7 @@ void simulate(int memory_value, linked_stack_t *stack)
             //start the thread
             //pack args
             int args[2] = {current_job_time, current_job_number};
-            if(pthread_create( &threads[i++], NULL, *simulate_thread , (void *) *args)){
+            if(pthread_create( &threads[i++], NULL, simulate_thread, (void *) current_job){
                 perror("Thread Issue");
             }else{
                 
