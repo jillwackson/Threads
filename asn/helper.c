@@ -137,7 +137,7 @@ void print(FILE *fp, char *fmt, int j)
 {
 	printf("hello 1");
 	char msg[MAX_STR_LEN];
-	printf("hello 1.1");
+	printf("%d",j);
 	sprintf(msg, fmt, j);
 	printf("hello 1.2");
 	printf("%s", msg);
