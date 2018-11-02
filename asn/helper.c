@@ -135,14 +135,12 @@ char*** transform_linked_list_to_3d_char(struct linked_list *commands,
 
 void print(FILE *fp, char *fmt, int j)
 {
-	printf("hello 1");
 	char msg[MAX_STR_LEN];
-	printf("%d",j);
+
 	sprintf(msg, fmt, j);
-	printf("hello 1.2");
-	printf("hello 1.3");
+
+	printf("%s", msg);
 	fprintf(fp, "%s", msg);
-	printf("hello 2");
 }
 
 void print_exceed_memory(FILE *fp, int j)
@@ -152,7 +150,7 @@ void print_exceed_memory(FILE *fp, int j)
 }
 
 void print_insufficient_memory(FILE *fp, int j)
-{	
+{
 	print(fp, "Unable to run job #%d. Insufficient memory resources\n", j);
 }
 void print_starting(FILE *fp, int j)
@@ -166,17 +164,12 @@ void print_completed(FILE *fp, int j)
 
 void print_memory_status(FILE *fp, int mem)
 {
-	printf("2.25");
 	print(fp, "Memory at %d\n", mem);
-	printf("2.75");
 }
 void print_allocate_memory(FILE *fp, int mem, int req)
 {
-	printf("1");
 	print(fp, "Allocating %d\n", req);
-	printf("2");
 	print_memory_status(fp, mem);
-	printf("3");
 }
 void print_deallocate_memory(FILE *fp, int mem, int req)
 {
