@@ -20,14 +20,15 @@ void simulate(int memory_value, linked_stack_t *stack)
     //counter for how many threads we have running
     int i = 0;
     //get the current job and then break it into its components
+    int current_job_time, current_job_memory, current_job_number 
     job_t *current_job = pop(stack);
 
     //while there are still jobs on the stack to be executed
     while (current_job != NULL)
     {
-        int current_job_number = current_job->number;
-        int current_job_memory = current_job->required_memory;
-        int current_job_time = current_job->required_time;
+        current_job_number = current_job->number;
+        current_job_memory = current_job->required_memory;
+        current_job->required_time;
         //not enough memory total
         if (current_job_memory > max_memory)
         {
