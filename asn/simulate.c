@@ -31,6 +31,11 @@ void simulate(int memory_value, linked_stack_t *stack)
         if (current_job_memory > max_memory)
         {
             print_exceed_memory(fp, current_job_number);
+            //get the current job and then break it into its components
+            job_t *current_job = pop(stack);
+            int current_job_number = current_job->number;
+            int current_job_memory = current_job->required_memory;
+            int current_job_time = current_job->required_time;
         }
         //not enough memory right now
         else if (memory - current_job_memory < 0)
@@ -53,7 +58,7 @@ void simulate(int memory_value, linked_stack_t *stack)
             }
         }
         //all of our threads are being used, lets wait for them to be free'd up.
-        else if (i >= NUMBER_OF_THREADS)
+        if (i >= NUMBER_OF_THREADS)
         {
             while (i > 0)
             {
@@ -64,7 +69,6 @@ void simulate(int memory_value, linked_stack_t *stack)
                 pthread_join(threads[i--], NULL);
             }
         }
-        //get the current job and then break it into its components
         job_t *current_job = pop(stack);
         int current_job_number = current_job->number;
         int current_job_memory = current_job->required_memory;
