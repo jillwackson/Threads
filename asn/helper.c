@@ -151,7 +151,6 @@ void print_exceed_memory(FILE *fp, int j)
 
 void print_insufficient_memory(FILE *fp, int j)
 {	
-	printf("jelly man");
 	print(fp, "Unable to run job #%d. Insufficient memory resources\n", j);
 }
 void print_starting(FILE *fp, int j)

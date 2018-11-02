@@ -47,29 +47,31 @@ void simulate(int memory_value, linked_stack_t *stack)
             //allocate memory
             memory = memory - current_job_memory;
             memory_usages[i] = current_job_memory;
+            printf("Debug before alloc");
             print_allocate_memory(fp, memory, current_job_memory);
             //start the thread
-            printf("hello im about to make threads");
-            if (pthread_create(&threads[i++], NULL, simulate_thread, (void *)current_job))
+            if (pthread_create(&threads[i], NULL, simulate_thread, (void *)current_job))
             {
                 printf("Thread Issue");
                 exit(1);
             }
+            i++;
         }
         //all of our threads are being used, lets wait for them to be free'd up.
-        if (i >= NUMBER_OF_THREADS)
+        if (i == NUMBER_OF_THREADS)
         {
-            while (i > 0)
+            while (i >= 0)
             {
                 //deallocate memory and join threads
                 memory = memory + memory_usages[i];
                 print_deallocate_memory(fp, memory, memory_usages[i]);
                 memory_usages[i] = 0;
-                pthread_join(threads[i--], NULL);
+                pthread_join(threads[i], NULL);
+                i--;
             }
         }
-        printf("right before we pop the next");
-        if (sizeof(stack)!=0)current_job = pop(stack);
+        printf("right here");
+        current_job = pop(stack);
     }
 }
 
