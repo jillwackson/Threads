@@ -21,10 +21,10 @@ void simulate(int memory_value, linked_stack_t *stack)
     int i = 0;
     //get the current job and then break it into its components
     int current_job_time, current_job_memory, current_job_number;
-    job_t *current_job = pop(stack);
+    job_t *current_job;
 
     //while there are still jobs on the stack to be executed
-    while (current_job != NULL)
+    while (current_job = pop(stack) != NULL)
     {
         current_job_number = current_job->number;
         current_job_memory = current_job->required_memory;
@@ -66,10 +66,6 @@ void simulate(int memory_value, linked_stack_t *stack)
                 pthread_join(threads[i--], NULL);
             }
         }
-        *current_job = pop(stack);
-        int current_job_number = current_job->number;
-        int current_job_memory = current_job->required_memory;
-        int current_job_time = current_job->required_time;
     }
 }
 
@@ -77,7 +73,7 @@ void simulate(int memory_value, linked_stack_t *stack)
 void *simulate_thread(void *ptr)
 {
     job_t *job;
-    job = (job_t *)ptr;
+    job = (job_t *) ptr;
     print_starting(fp, job->number);
     sleep(job->required_time);
     print_completed(fp, job->number);
